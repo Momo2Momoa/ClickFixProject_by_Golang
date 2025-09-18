@@ -1,0 +1,155 @@
+header {
+   font-family: "Arial", sans-serif;
+   background-color: lightgray;
+   color: black;
+   padding: 20px;
+   text-align: left;
+   height: 15px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   cursor: default;
+}
+
+.logo{
+   font-size: 24px;
+   cursor: pointer;
+}
+
+.login {
+   padding: 12px 20px;
+   background-color: darkgray; 
+   color: black;
+   border: none;
+   border-radius: 5px; 
+   cursor: pointer;
+   font-size: 16px;
+   outline: none;
+}
+
+.login:hover {
+   background-color: #666;
+   color: white;
+}
+
+.member{
+   padding: 15px;
+   margin-right: 15px;
+   font-size: 15px;
+}
+
+body{
+   margin: 0;
+   padding: 0;
+}
+
+nav {
+   position: fixed;
+   top: 50;
+   left: 20px;
+   height: 45%;
+   width: 150px;
+   background-color: white; 
+   display: flex;
+   flex-direction: column;
+   padding-top: 0px;
+}
+
+nav ul {
+   list-style: none;
+   padding: 0;
+   margin: 1;
+}
+
+.componentButton {
+   font-family: "Arial", sans-serif;
+   width: 100%;
+   padding: 15px;
+   margin: 1px 0;
+   background-color: lightgray;
+   color: black;
+   border: none;
+   text-align: center;
+   cursor: pointer;
+   font-size: 15px;
+}
+
+.componentButton:hover {
+   background-color: darkgray;
+   color: white
+}
+
+section {
+   margin-left: 220px;
+   padding: 10px;
+}
+
+.content{
+   float: center;
+   margin: auto ;
+   width: 70%;
+   background-color: #f1f1f1;
+   height: 1000px; 
+}
+
+.groupComponent{
+   height: 140px;
+   width: 90%;
+   background-color: lightgray;
+   margin-left: 15px;
+   margin: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 35px;
+}
+
+.choser {
+   height: 120px;
+   width: 120px;
+   background-color: white;
+   border: 3px solid gray;
+   border-radius: 5px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   box-sizing: border-box;
+}
+
+.headerContent {
+   font-family: "Arial", sans-serif;
+   font-size: 20px;
+   padding-top: 20px;
+   padding-left: 20px;
+}
+
+#groupMaterial {
+   width: 90%;
+   height: auto;
+   border: 1px solid #c3c3c3;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+   align-items: flex-start;
+   background-color: lightgray;
+   border: 2px solid darkgray; 
+   margin: 10px auto;
+   gap: 5px;
+}
+
+#groupMaterial div {
+   height: 110px;
+   width: 110px;
+   background-color: white;
+   margin: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   border: 2px solid #c3c3c3; 
+   box-sizing: border-box;
+   overflow: hidden;
+}
+
+

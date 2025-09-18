@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickFix & Custom Lab</title>
+    <link rel="stylesheet" href="static/styleSettings.css">
+    <script>
+        function handleUpdateResponse(responseText) {
+            const dialog = document.createElement('dialog');
+            dialog.textContent = responseText;
+            document.body.appendChild(dialog);
+            dialog.showModal();
+
+            setTimeout(() => {
+                dialog.close();
+                dialog.remove();
+                if (responseText.includes("User updated successfully")) {
+                    window.location.href = "/settings";
+                }
+            }, 2000);
+        }
+
+        function updating(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+
+            fetch('/update', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(responseText => handleUpdateResponse(responseText))
+            .catch(error => console.error('Error:', error));
+        }
+
+        function deleteAccount() {
+            if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+                fetch('/delete', {
+                    method: 'POST'
+                })
+                .then(response => response.text())
+                .then(responseText => {
+                // ลบ alert ออก
+                window.location.href = "/";
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <span class="logo">ClickFix & Custom Lab</span>
+        <div class="login-container">
+            <span class="member">{{.MemberName}}</span>
+        </div>
+    </header>
+
+    <section>
+        <nav>
+          <ul>
+            <button class="componentButton" onclick="document.querySelector('.edit-container').style.display = 'block'; document.querySelector('.delete-container').style.display = 'none';">edit info</button>
+            <button class="componentButton" onclick="document.querySelector('.delete-container').style.display = 'block'; document.querySelector('.edit-container').style.display = 'none';">delete account</button>
+          </ul>
+        </nav>
+    </section>  
+
+    <div class="container">
+        <div class="edit-container" style="display: block;">
+            <h2>Settings</h2>
+            <form action="/update" method="POST" onsubmit="updating(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="{{.MemberName}}" required><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br>
+                <button type="submit">Confirm</button>
+            </form>
+        </div>
+        
+        <div class="delete-container" style="display: none;">
+            <h2>Delete Account</h2>
+            <p>คุณต้องการที่จะลบบัญชีนี้ใช่หรือไม่ ?</p>
+            <button class="delete-account" onclick="deleteAccount()">Delete Account</button>
+        </div>
+    </div>
+</body>
+</html>
